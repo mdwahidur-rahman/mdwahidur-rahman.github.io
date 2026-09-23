@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mdwahidur-rahman.github.io/sitemap.xml
