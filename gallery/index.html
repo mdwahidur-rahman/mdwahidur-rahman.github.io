@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
         <link rel="icon" href="../favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="apple-touch-icon" href="../favicon.png">
@@ -47,6 +47,7 @@
                                 <li><a class="nav-link" href="../experience/index.html">Experience</a></li>
                                 <li><a class="nav-link" href="../awards/index.html">Awards</a></li>
                                 <li><a class="nav-link" href="../service/index.html">Service</a></li>
+                                <li><a class="nav-link is-active" href="../gallery/index.html" aria-current="page">Gallery</a></li>
                                 <li><a class="nav-link" href="../contact/index.html">Contact</a></li>
                             </ul>
         </nav>
@@ -79,7 +80,8 @@
                                 <li style="--i: 4"><a class="" href="../experience/index.html">Experience</a></li>
                                 <li style="--i: 5"><a class="" href="../awards/index.html">Awards</a></li>
                                 <li style="--i: 6"><a class="" href="../service/index.html">Service</a></li>
-                                <li style="--i: 7"><a class="" href="../contact/index.html">Contact</a></li>
+                                <li style="--i: 7"><a class="is-active" href="../gallery/index.html" aria-current="page">Gallery</a></li>
+                                <li style="--i: 8"><a class="" href="../contact/index.html">Contact</a></li>
                             </ul>
         </nav>
                 <a class="btn btn-primary" href="../storage/uploads/cv/cv-YpQTIUWR50.pdf" target="_blank" rel="noopener"><svg class="p-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></svg>
@@ -115,7 +117,62 @@
         <p class="lead">Conferences, presentations, awards, certificates and research activities.</p>
     </header>
 
-        <p class="empty">No gallery images have been added yet.</p>
+            <div class="gallery-filters" role="group" aria-label="Filter by category" data-gallery-filters>
+        <button type="button" class="gf-btn is-active" data-gallery-filter="" aria-pressed="true">All <span class="gf-n">2</span></button>
+                <button type="button" class="gf-btn" data-gallery-filter="Presentations" aria-pressed="false">Presentations <span class="gf-n">1</span></button>
+                <button type="button" class="gf-btn" data-gallery-filter="Awards" aria-pressed="false">Awards <span class="gf-n">1</span></button>
+            </div>
+        <div class="gallery-grid" data-lightbox-group>
+                <figure class="gallery-item" data-category="Awards">
+            <a class="gallery-media" href="../storage/uploads/gallery/2026/cwmcgi5umxxf2lrmarzr.jpg" data-lightbox data-title="Securing the Future of Medical AI" data-meta="Awards · April 2026 · Texas A&amp;M University-Kingsville." data-caption="Proud to present my research on privacy-preserving federated learning and receive 2nd Prize at the Texas A&amp;M University-Kingsville Innovation Day.">
+                <img src="../storage/uploads/gallery/2026/cwmcgi5umxxf2lrmarzr-web.webp" alt="Securing the Future of Medical AI" loading="lazy" decoding="async" width="1200" height="1600">
+                <span class="gallery-zoom" aria-hidden="true"><svg class="p-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>
+</span>
+                <span class="visually-hidden">Open full size: Securing the Future of Medical AI</span>
+            </a>
+            <figcaption>
+                <span class="gallery-cat">Awards</span>
+                <strong class="gallery-title">Securing the Future of Medical AI</strong>
+                                <span class="gallery-meta">April 2026 · Texas A&amp;M University-Kingsville.</span>
+                                                <span class="gallery-caption">Proud to present my research on privacy-preserving federated learning and receive 2nd Prize at the Texas A&amp;M University-Kingsville Innovation Day.</span>
+                                            </figcaption>
+        </figure>
+                <figure class="gallery-item" data-category="Presentations">
+            <a class="gallery-media" href="../storage/uploads/gallery/2026/gxhix39wsxsmx431ebdg.jpg" data-lightbox data-title="Presenting Award-Winning Research at Innovation Day" data-meta="Presentations · April 2026 · Texas A&amp;M University-Kingsville." data-caption="Showcasing my work on &quot;Privacy-Preserving Federated Learning for Secure Medical Diagnosis: A Diabetic Foot Ulcer Case Study&quot; at Texas A&amp;M University-Kingsville.">
+                <img src="../storage/uploads/gallery/2026/gxhix39wsxsmx431ebdg-web.webp" alt="Presenting Award-Winning Research at Innovation Day" loading="lazy" decoding="async" width="4642" height="3722">
+                <span class="gallery-zoom" aria-hidden="true"><svg class="p-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>
+</span>
+                <span class="visually-hidden">Open full size: Presenting Award-Winning Research at Innovation Day</span>
+            </a>
+            <figcaption>
+                <span class="gallery-cat">Presentations</span>
+                <strong class="gallery-title">Presenting Award-Winning Research at Innovation Day</strong>
+                                <span class="gallery-meta">April 2026 · Texas A&amp;M University-Kingsville.</span>
+                                                <span class="gallery-caption">Showcasing my work on &quot;Privacy-Preserving Federated Learning for Secure Medical Diagnosis: A Diabetic Foot Ulcer Case Study&quot; at Texas A&amp;M University-Kingsville.</span>
+                                            </figcaption>
+        </figure>
+            </div>
+    <p class="empty" data-gallery-empty hidden>No images in this category.</p>
+    <div class="lightbox" id="lightbox" hidden>
+    <div class="lb-backdrop" data-lb-close></div>
+    <div class="lb-dialog" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <figure class="lb-figure">
+            <img class="lb-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+            <figcaption class="lb-cap">
+                <span class="lb-count" aria-live="polite"></span>
+                <strong class="lb-title"></strong>
+                <span class="lb-meta"></span>
+                <span class="lb-text"></span>
+            </figcaption>
+        </figure>
+        <button type="button" class="lb-btn lb-prev" data-lb-prev aria-label="Previous image"><svg class="p-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg>
+</button>
+        <button type="button" class="lb-btn lb-next" data-lb-next aria-label="Next image"><svg class="p-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg>
+</button>
+        <button type="button" class="lb-btn lb-close" data-lb-close aria-label="Close image viewer"><svg class="p-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+</button>
+    </div>
+</div>
     </div>
 </main>
 
@@ -137,6 +194,7 @@
                                 <li><a href="../experience/index.html">Experience</a></li>
                                 <li><a href="../awards/index.html">Awards</a></li>
                                 <li><a href="../service/index.html">Service</a></li>
+                                <li><a href="../gallery/index.html">Gallery</a></li>
                                 <li><a href="../contact/index.html">Contact</a></li>
                             </ul>
         </nav>
