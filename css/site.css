@@ -933,3 +933,31 @@ body.lb-open { overflow: hidden; }
     .hero-affil { flex-direction: column; gap: 2px; }
     .hero-affil span + span::before { display: none; }
 }
+
+/* ---------- Adaptive primary navigation (fits any number of links) ---------- */
+.brand, .header-actions { flex: 0 0 auto; }
+.brand { margin-right: 0; }
+.primary-nav { flex: 1 1 auto; min-width: 0; display: flex; }
+.primary-nav .nav-list { margin-left: auto; flex-wrap: nowrap; }
+.js .primary-nav:not(.is-ready), html:not(.js) .primary-nav { overflow: hidden; }
+.nav-link { padding: 8px 8px; white-space: nowrap; }
+.nav-more { position: relative; }
+.nav-more[hidden] { display: none; }
+.nav-more-btn { display: inline-flex; align-items: center; gap: 3px; background: none; border: 0; cursor: pointer; font: 500 .84rem/1.2 var(--sans); }
+.nav-more-btn .p-icon { width: 14px; height: 14px; transition: transform .25s var(--ease); }
+.nav-more-btn[aria-expanded="true"] { color: var(--text); background: var(--bg-alt); }
+.nav-more-btn[aria-expanded="true"] .p-icon { transform: rotate(180deg); }
+.primary-nav .nav-more-menu {
+    position: absolute; right: 0; top: calc(100% + 12px); z-index: 65; display: block; min-width: 200px; margin: 0; padding: 6px;
+    list-style: none; background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 22px 46px -24px rgba(10, 20, 40, .5); animation: rise .25s var(--ease);
+}
+.primary-nav .nav-more-menu[hidden] { display: none; }
+.nav-more-menu .nav-link { display: block; padding: 9px 12px; border-radius: 8px; font-size: .88rem; }
+.nav-more-menu .nav-link::before, .nav-more-menu .nav-link::after { display: none; }
+.nav-more-menu .nav-link:hover { background: var(--bg-alt); }
+.nav-more-menu .nav-link.is-active { color: var(--accent-text); background: var(--accent-soft); }
+@media (min-width: 901px) { .primary-nav { display: flex; } .menu-btn { display: none; } }
+@media (max-width: 900px) { .primary-nav { display: none; } .menu-btn { display: inline-flex; } }
+.primary-nav .nav-list { align-items: center; }
+.nav-more-btn { font-family: var(--sans); font-size: .84rem; font-weight: 500; line-height: inherit; color: var(--text-2); }

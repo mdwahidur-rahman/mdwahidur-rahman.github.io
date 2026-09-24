@@ -85,7 +85,7 @@
             if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
             else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
         });
-        window.addEventListener('resize', function () { if (window.innerWidth > 1180) { closeDrawer(); } });
+        window.addEventListener('resize', function () { if (window.innerWidth > 900) { closeDrawer(); } });
     }
 
     /* ---------- Copy (citation / BibTeX) + toast ---------- */
@@ -467,5 +467,58 @@
             if (Math.abs(dx) > 45) { lbShow(lbIndex + (dx < 0 ? 1 : -1)); }
             touchX = null;
         });
+    }
+
+    /* ---------- Priority navigation: links that don't fit move into "More" ---------- */
+    var pnav = document.querySelector('[data-priority-nav]');
+    if (pnav) {
+        var navList = pnav.querySelector('.nav-list');
+        var moreLi = pnav.querySelector('.nav-more');
+        var moreBtn = pnav.querySelector('.nav-more-btn');
+        var moreMenu = pnav.querySelector('.nav-more-menu');
+        var navItems = $all('.nav-item', pnav);
+        navItems.forEach(function (li, i) { li.setAttribute('data-order', String(i)); });
+        var byOrder = function (a, b) { return +a.getAttribute('data-order') - +b.getAttribute('data-order'); };
+        var closeMore = function () { moreBtn.setAttribute('aria-expanded', 'false'); moreMenu.hidden = true; };
+        var openMore = function () { moreBtn.setAttribute('aria-expanded', 'true'); moreMenu.hidden = false; };
+        var fits = function () { return navList.scrollWidth <= pnav.clientWidth + 1; };
+        var layoutNav = function () {
+            closeMore();
+            navItems.forEach(function (li) { navList.insertBefore(li, moreLi); });
+            moreLi.hidden = true;
+            if (pnav.offsetParent === null || fits()) { moreBtn.classList.remove('is-active'); pnav.classList.add('is-ready'); return; }
+            moreLi.hidden = false;
+            var candidates = navItems.slice().sort(function (a, b) {
+                return (+b.getAttribute('data-priority') - +a.getAttribute('data-priority')) || byOrder(b, a);
+            });
+            var moved = [];
+            for (var k = 0; k < candidates.length && !fits(); k++) {
+                moved.push(candidates[k]);
+                moreMenu.appendChild(candidates[k]);
+            }
+            moved.sort(byOrder).forEach(function (li) { moreMenu.appendChild(li); });
+            moreBtn.classList.toggle('is-active', !!moreMenu.querySelector('.is-active'));
+            pnav.classList.add('is-ready');
+        };
+        var navTick = false, navWidth = window.innerWidth;
+        window.addEventListener('resize', function () {
+            // Only re-fit when the width changes; height-only resizes (toolbars, zoom bars) keep the menu open.
+            if (navTick || window.innerWidth === navWidth) { return; }
+            navWidth = window.innerWidth;
+            navTick = true;
+            window.requestAnimationFrame(function () { navTick = false; layoutNav(); });
+        });
+        layoutNav();
+        if (document.fonts && document.fonts.ready) { document.fonts.ready.then(layoutNav); }
+        moreBtn.addEventListener('click', function () { if (moreMenu.hidden) { openMore(); } else { closeMore(); } });
+        document.addEventListener('click', function (e) { if (!moreMenu.hidden && !moreLi.contains(e.target)) { closeMore(); } });
+        pnav.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !moreMenu.hidden) { closeMore(); moreBtn.focus(); }
+            else if (e.key === 'ArrowDown' && document.activeElement === moreBtn) {
+                e.preventDefault(); openMore();
+                var first = moreMenu.querySelector('a'); if (first) { first.focus(); }
+            }
+        });
+        moreLi.addEventListener('focusout', function (e) { if (e.relatedTarget && !moreLi.contains(e.relatedTarget)) { closeMore(); } });
     }
 })();
